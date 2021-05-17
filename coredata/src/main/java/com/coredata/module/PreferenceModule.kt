@@ -134,4 +134,12 @@ constructor(@AppContext context: Context, @AppPreferenceName prefName: String) {
         return getInt("unseen", 0) ?: 0
     }
 
+    fun getWordsList(): String? {
+        return getString("words", null)
+    }
+
+    fun setWordsList(words: String?) {
+        putString("words", words)
+    }
+
 }

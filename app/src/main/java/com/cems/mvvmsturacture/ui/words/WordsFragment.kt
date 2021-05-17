@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -14,15 +15,21 @@ import androidx.annotation.RequiresApi
 import com.blankj.utilcode.util.NetworkUtils
 import com.cems.mvvmsturacture.R
 import com.common.commondomain.interactor.words.WordsClassResult
+import com.coredata.module.PreferenceModule
 import com.coredomain.BaseVS
 import com.coreui.ui.fragment.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 import java.lang.StringBuilder
+import java.util.prefs.Preferences
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class WordsFragment : BaseFragment<WordsViewModel, WordsIntent>() {
+
+    @Inject
+    lateinit var preferenceModule: PreferenceModule
 
     private lateinit var wordsProgressBar: ProgressBar
     private lateinit var resultTxt: TextView
@@ -82,6 +89,8 @@ class WordsFragment : BaseFragment<WordsViewModel, WordsIntent>() {
                     resultString.appendln(it.text + "   " + it.concurrency)
                 }
 
+                preferenceModule.setWordsList(resultString.toString())
+
                 resultTxt.text = resultString
             }
         }
@@ -107,6 +116,9 @@ class WordsFragment : BaseFragment<WordsViewModel, WordsIntent>() {
 
             wordsPublisher.onNext(WordsIntent.GetWordsIntent())
         } else {
+            var result: String? = " "
+            result = preferenceModule.getWordsList().toString()
+            resultTxt.text = result
             Toast.makeText(requireContext(), "No Internet", Toast.LENGTH_SHORT).show()
         }
     }
