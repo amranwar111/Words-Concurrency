@@ -5,6 +5,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(path: ':coredomain')
 
+    // Retrofit & OkHttp
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+
 }
 
 sourceCompatibility = "7"

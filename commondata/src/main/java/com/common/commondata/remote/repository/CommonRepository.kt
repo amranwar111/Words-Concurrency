@@ -5,6 +5,7 @@ import com.common.commondata.dataSource.common.CommonDataFactory
 import com.common.commondata.remote.model.UserModule
 import com.common.commondomain.repositorys.ICommonRepository
 import com.common.commondomain.interactor.login.LoginModel
+import com.common.commondomain.interactor.words.WordsClassResult
 import com.coredata.module.PreferenceModule
 import com.coredomain.BaseVS
 import com.coredomain.diinterfaces.AppContext
@@ -20,6 +21,10 @@ class CommonRepository @Inject constructor(
 ) : ICommonRepository {
     override fun login(params: LoginModel?): Single<BaseVS> {
         return commonDataFactory.retrieveDataSource().login(params!!)
+    }
+
+    override fun getWords(): Single<WordsClassResult> {
+        return commonDataFactory.retrieveDataSource().getWords()
     }
 }
 

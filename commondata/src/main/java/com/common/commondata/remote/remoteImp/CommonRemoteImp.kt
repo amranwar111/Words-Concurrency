@@ -5,6 +5,7 @@ import com.common.commondata.remote.getMessage
 import com.common.commondata.remote.model.request.*
 import com.common.commondata.remote.service.CommonService
 import com.common.commondomain.interactor.login.LoginModel
+import com.common.commondomain.interactor.words.WordsClassResult
 import com.coredata.module.PreferenceModule
 import com.coredomain.BaseVS
 import com.coredomain.MyRemoteException
@@ -46,8 +47,17 @@ class CommonRemoteImp @Inject constructor(
 //            }
         }
 
-
+    override fun getWords(): Single<WordsClassResult> {
+        return commonService.getWords()
+            .map {
+                if (it.isSuccessful) {
+                    WordsClassResult(it.body()!!)
+                } else {
+                    throw MyRemoteException(it.code(), it.errorBody()?.getMessage() ?: "")
+                }
+            }
     }
+}
 
 
 
