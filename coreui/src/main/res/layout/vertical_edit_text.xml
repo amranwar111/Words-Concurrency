@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+>
+    <ImageView android:layout_width="@dimen/_20sdp"
+               android:layout_height="wrap_content"
+               android:adjustViewBounds="true"
+    android:id="@+id/icon"
+
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintBottom_toBottomOf="parent"
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/label"
+              tools:text="label"
+              android:paddingBottom="0dp"
+              android:includeFontPadding="false"
+              android:textSize="@dimen/normalTextSize"
+              android:layout_marginStart="@dimen/marginStandard"
+              app:layout_constraintStart_toEndOf="@+id/icon"
+              app:layout_constraintTop_toTopOf="parent"
+              android:textColor="@color/blue"
+    />
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/edittext"
+            android:includeFontPadding="false"
+            app:layout_constraintStart_toStartOf="@+id/label"
+            app:layout_constraintEnd_toStartOf="@+id/checkIcon"
+            android:layout_marginEnd="@dimen/halfMarginStandard"
+            app:hintEnabled="false"
+            style="@style/edittextStyle"
+            app:hintAnimationEnabled="false"
+            android:minHeight="0dp"
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingBottom="@dimen/_2sdp"
+            app:errorEnabled="false"
+             app:layout_constraintTop_toBottomOf="@+id/label"
+            app:layout_constraintBottom_toBottomOf="parent"
+    >
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/largeTextSize"
+                tools:text="data"
+                android:includeFontPadding="false"
+                android:textColorHint="@color/gray"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:minHeight="0dp"
+                android:textColor="@color/grayText"
+        />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <ImageView
+            android:id="@+id/checkIcon"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:adjustViewBounds="true"
+            app:layout_constraintTop_toTopOf="@+id/edittext"
+            app:layout_constraintBottom_toBottomOf="@+id/edittext"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/halfMarginStandard"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

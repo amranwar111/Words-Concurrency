@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:background="#BB000000"
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <View android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+        />
+        <View android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+        />
+        <androidx.constraintlayout.widget.Guideline
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageGuide"
+                app:layout_constraintGuide_begin="@dimen/_100sdp"/>
+        <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="wrap_content"
+
+                android:adjustViewBounds="true"
+                android:src="@drawable/close_1"
+                android:id="@+id/titleImage" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="@+id/imageGuide" app:layout_constraintBottom_toTopOf="@+id/imageGuide"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                android:contentDescription="titleImage"/>
+        <TextView
+                tools:text="done"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/halfMarginStandard"
+                android:layout_marginLeft="@dimen/halfMarginStandard"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleImage"
+                android:layout_marginTop="@dimen/marginStandard"
+                android:textSize="@dimen/moreVerylargeTextSize"
+                android:textColor="@color/white"/>
+        <TextView
+                tools:text="details"
+                android:layout_width="0dp"
+                android:layout_margin="@dimen/halfMarginStandard"
+                android:layout_height="wrap_content"
+                android:id="@+id/titleDesc"
+                app:layout_constraintTop_toBottomOf="@+id/title" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="@dimen/MarginStandardAndHalf"
+                android:textSize="@dimen/largeTextSize" android:gravity="center" android:textColor="@color/white"
+                android:lineSpacingExtra="@dimen/marginStandard"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/eightHours"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleDesc"
+                android:layout_marginTop="@dimen/marginStandard"
+                android:textSize="@dimen/moreVerylargeTextSize"
+                android:textColor="@color/white"/>
+        <carbon.widget.TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/request"
+                style="@style/buttonStyle"
+                android:text="موافق"
+                android:layout_marginTop="@dimen/doubleMarginStandard_2"
+                app:carbon_cornerRadius="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/marginStandard"
+                android:layout_marginEnd="@dimen/marginStandard"
+                android:textAllCaps="false"
+
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintTop_toBottomOf="@+id/eightHours"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cancel"/>
+        <carbon.widget.TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancel"
+                style="@style/buttonStyle"
+                android:layout_marginStart="@dimen/marginStandard"
+                android:layout_marginEnd="@dimen/marginStandard"
+                android:text="إلغاء"
+                android:layout_marginTop="@dimen/doubleMarginStandard_2"
+                app:carbon_cornerRadius="@dimen/_4sdp"
+                android:textAllCaps="false"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintTop_toBottomOf="@+id/eightHours"
+                app:layout_constraintStart_toEndOf="@+id/request"
+                app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

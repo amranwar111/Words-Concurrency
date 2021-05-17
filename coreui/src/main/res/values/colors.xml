@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#203B50</color>
+    <color name="yellow">#CAA861</color>
+    <color name="gray">#FCFCFC</color>
+    <color name="verificationColor">#D5DDE0</color>
+    <color name="grayText">#878686</color>
+    <color name="grayLight">#F3F3F3</color>
+    <color name="grayBackground">#E9E9E9</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="mine">#F3F3F3</color>
+    <color name="alphawhite">#50FFFFFF</color>
+    <color name="warn">#FF9500</color>
+    <color name="success">#41B939</color>
+    <color name="error">#EB3D41</color>
+    <color name="accept">#556AA0C8</color>
+    <color name="acceptText">#6AA0C8</color>
+    <color name="refuse">#F7EBEB</color>
+    <color name="refuseText">#2B2B2B</color>
+
+</resources>

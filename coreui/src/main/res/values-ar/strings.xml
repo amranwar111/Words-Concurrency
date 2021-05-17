@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="select">اختر</string>
+    <string name="hide">إخفاء</string>
+    <string name="try_again">حاول مرة أخرى</string>
+    <string name="no_datafound">لا يوجد</string>
+    <string name="camera">الكاميرا</string>
+    <string name="filePicker">ملف</string>
+    <string name="cancel">إلغاء</string>
+    <string name="searchFor">ابحث عن</string>
+
+</resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="model"
+            type="com.cems.mvvmsturacture.ui.auth.login.UserLoginModel" />
+
+        <import type="g.trippl3dev.com.validation.domain.interfaces.Enums.PATTERN" />
+
+        <import type="com.coreui.utils.validation.ValidationTypes.MEditText" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/doubleMarginStandard_2"
+        tools:context=".ui.auth.login.LoginFragment">
+
+
+
+        <com.coreui.ui.customViews.MaterialEditText
+            android:id="@+id/ed_pass"
+            style="@style/edittextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginStandard"
+            android:layout_marginTop="@dimen/marginStandard"
+            android:layout_marginEnd="@dimen/marginStandard"
+            android:autofillHints="@string/pass"
+            android:hint="@string/pass"
+            android:inputType="phone"
+            android:orientation="horizontal"
+            app:label="@string/pass"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_phone" />
+
+        <com.coreui.ui.customViews.MaterialEditText
+            android:id="@+id/ed_phone"
+            style="@style/edittextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginStandard"
+            android:layout_marginTop="@dimen/doubleMarginStandard"
+            android:layout_marginEnd="@dimen/marginStandard"
+            android:autofillHints="@string/phone"
+            android:hint="@string/phone"
+            android:inputType="phone"
+            android:orientation="horizontal"
+            app:empty="@{@string/empty_phone_validation}"
+            app:error="@{@string/error_phone_validation}"
+            app:isIgnore="@{false}"
+            app:label="@string/phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:pattern="@{PATTERN.PHONE}"
+            app:text="@={model.phone}"
+            app:type='@{MEditText.TYPE}'
+            app:watch="@{true}" />
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener::onClick}"
+            android:text="@string/login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_pass" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

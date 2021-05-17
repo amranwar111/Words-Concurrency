@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MaterialEditText">
+        <attr name="textStyle" format="reference"/>
+        <attr name="labelColor" format="color"/>
+        <attr name="labelTextSize" format="dimension"/>
+        <attr name="labelStartMargin" format="dimension"/>
+        <attr name="labelEndMargin" format="dimension"/>
+        <attr name="labelTopMargin" format="dimension"/>
+        <attr name="labelBottomMargin" format="dimension"/>
+        <attr name="edittextColor" format="color"/>
+        <attr name="edittextSize" format="dimension"/>
+        <attr name="label" format="string|reference"/>
+        <attr name="text" format="string|reference"/>
+        <attr name="icon" format="reference"/>
+        <attr name="hint" format="string|reference"/>
+        <attr name="android:imeOptions"/>
+        <attr name="android:inputType"/>
+        <attr name="android:maxLength"/>
+    </declare-styleable>
+    <declare-styleable name="MaterialEditTextPhone">
+        <attr name="phone" format="string|reference"/>
+        <attr name="flag" format="string|reference"/>
+        <attr name="phoneTextSize" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="CustomLayoutLP">
+        <attr name="android:layout_gravity" />
+        <attr name="layout_position">
+            <enum name="middle" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

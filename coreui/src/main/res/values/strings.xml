@@ -1,0 +1,10 @@
+<resources>
+    <string name="select">select</string>
+    <string name="hide">hide</string>
+    <string name="try_again">try_again</string>
+    <string name="no_datafound">no_datafound</string>
+    <string name="camera">camera</string>
+    <string name="filePicker">filePicker</string>
+    <string name="cancel">Cancel</string>
+    <string name="searchFor">searchFor</string>
+</resources>

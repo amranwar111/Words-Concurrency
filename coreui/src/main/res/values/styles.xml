@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="edittextStyle" >
+        <item name="colorControlNormal">@android:color/transparent</item>
+        <item name="colorControlActivated">@android:color/transparent</item>
+        <item name="colorControlHighlight">@android:color/transparent</item>
+        <item name="android:background" >@drawable/bottomline</item>
+    </style>
+    <style name="buttonStyle">
+        <item name="android:textSize">@dimen/largeTextSize</item>
+        <item name="android:background">@drawable/buttonbackground</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/MarginStandardAndHalf</item>
+    </style>
+
+    <style name="buttonStyleReject">
+        <item name="android:textSize">@dimen/largeTextSize</item>
+        <item name="android:background">@drawable/buttonrejectbackground</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/MarginStandardAndHalf</item>
+    </style>
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialoge_start</item>
+        <item name="android:windowExitAnimation">@anim/dialoge_end</item>
+    </style>
+
+    <style name="Small">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Set parent theme as app theme. -->
+    <style name="DialogTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="mytheme" parent="android:style/Theme.Translucent">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+</resources>

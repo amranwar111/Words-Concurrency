@@ -1,0 +1,84 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+                name="drawable"
+                type="android.graphics.drawable.Drawable"
+
+        />
+        <variable
+                name="name"
+                type="String"/>
+    </data>
+
+    <carbon.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:carbon_elevation="@dimen/_4sdp"
+            android:background="@color/white"
+            android:id="@+id/appbarContainer"
+    >
+
+        <ImageView
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{drawable,default=@drawable/close_1}"
+                tools:src="@drawable/close_1"
+                android:padding="@dimen/marginStandard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                fontPath="font/fontB.ttf"
+                android:textSize="@dimen/verylargeTextSize"
+                android:layout_gravity="center"
+                android:id="@+id/title_center"
+                android:text="@{name}"
+                android:visibility="visible"
+                android:textColor="@color/yellow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                fontPath="font/fontB.ttf"
+                android:textSize="@dimen/largeTextSize"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/title_side"
+                android:visibility="gone"
+                android:text="@{name}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/doubleMarginStandard"
+                app:layout_constraintBottom_toBottomOf="parent"
+        />
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/largeTextSize"
+
+                android:textColor="@color/yellow"
+                android:text="@{name}"
+                android:visibility="gone"
+                fontPath="font/fontB.ttf"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/close"
+                android:layout_marginStart="@dimen/doubleMarginStandard"
+        />
+
+    </carbon.widget.ConstraintLayout>
+</layout>

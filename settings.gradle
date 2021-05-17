@@ -1,0 +1,2 @@
+include ':app', ':coredomain', ':coredata', ':coreui', ':validation', ':listlibrary', ':commondomain', ':commondata', ':SocialLib', ':customlist', ':marketerdomain', ':marketerdata', ':userdomain', ':userdata'
+rootProject.name='MvvmSturacture'

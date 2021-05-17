@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def domaincore = rootProject.ext.domaincore
+    domaincore.each{ k, v -> api v }
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+

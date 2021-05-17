@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginStandard">@dimen/_8sdp</dimen>
+    <dimen name="halfMarginStandard">@dimen/_4sdp</dimen>
+    <dimen name="doubleMarginStandard">@dimen/_16sdp</dimen>
+    <dimen name="doubleMarginStandard_2">@dimen/_32sdp</dimen>
+    <dimen name="MarginStandardAndHalf">@dimen/_12sdp</dimen>
+
+    <!-- fonts -->
+    <dimen name="smallTextSize">@dimen/_8ssp</dimen>
+    <dimen name="normalTextSize">@dimen/_10ssp</dimen>
+    <dimen name="largeTextSize">@dimen/_12ssp</dimen>
+    <dimen name="verylargeTextSize">@dimen/_14ssp</dimen>
+    <dimen name="moreVerylargeTextSize">@dimen/_16ssp</dimen>
+</resources>

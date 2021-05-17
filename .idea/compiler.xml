@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.7">
+      <module name="commondomain" target="1.7" />
+      <module name="coredomain" target="1.7" />
+      <module name="marketerdomain" target="1.7" />
+      <module name="MvvmSturacture.app" target="1.8" />
+      <module name="MvvmSturacture.commondata" target="1.8" />
+      <module name="MvvmSturacture.coredata" target="1.8" />
+      <module name="MvvmSturacture.coreui" target="1.8" />
+      <module name="MvvmSturacture.customlist" target="1.8" />
+      <module name="MvvmSturacture.listlibrary" target="1.8" />
+      <module name="MvvmSturacture.marketerdata" target="1.8" />
+      <module name="MvvmSturacture.SocialLib" target="1.8" />
+      <module name="MvvmSturacture.userdata" target="1.8" />
+      <module name="MvvmSturacture.validation" target="1.8" />
+      <module name="userdomain" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
