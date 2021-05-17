@@ -12,16 +12,19 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.NetworkUtils
 import com.cems.mvvmsturacture.R
 import com.common.commondomain.interactor.words.WordsClassResult
 import com.coredata.module.PreferenceModule
 import com.coredomain.BaseVS
 import com.coreui.ui.fragment.BaseFragment
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 import java.lang.StringBuilder
+import java.util.ArrayList
 import java.util.prefs.Preferences
 import javax.inject.Inject
 
@@ -31,8 +34,13 @@ class WordsFragment : BaseFragment<WordsViewModel, WordsIntent>() {
     @Inject
     lateinit var preferenceModule: PreferenceModule
 
+    private lateinit var gson: Gson
+
+    var resultString = ArrayList<WordsModel>()
     private lateinit var wordsProgressBar: ProgressBar
-    private lateinit var resultTxt: TextView
+    private lateinit var wordsRecycler: RecyclerView
+
+    private lateinit var adapter: WordsAdapter
 
     private val wordsPublisher = BehaviorSubject.create<WordsIntent.GetWordsIntent>()
 
@@ -54,10 +62,16 @@ class WordsFragment : BaseFragment<WordsViewModel, WordsIntent>() {
                 wordsProgressBar.visibility = View.GONE
             }
             is WordsClassResult -> {
+                var thread = Thread.currentThread()
+                Log.e("TAG", "render: " + Thread.currentThread().name.toString())
                 wordsProgressBar.visibility = View.GONE
 
-                var stringWords = Html.fromHtml(state.model.string(), Html.FROM_HTML_SEPARATOR_LINE_BREAK_DIV).toString()
-                val re = Regex("[^a-zA-Z0-9\\s\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF\\uFB50-\\uFDCF\\uFDF0-\\uFDFF\\uFE70-\\uFEFF ]")
+                Log.e("TAG", "render: " + Thread.currentThread().name)
+                var stringWords =
+                    Html.fromHtml(state.model.string(), Html.FROM_HTML_SEPARATOR_LINE_BREAK_DIV)
+                        .toString()
+                val re =
+                    Regex("[^a-zA-Z0-9\\s\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF\\uFB50-\\uFDCF\\uFDF0-\\uFDFF\\uFE70-\\uFEFF ]")
                 stringWords = re.replace(stringWords, " ").split(" ").toString()
 
                 val wordArrayList = re.replace(stringWords, " ").split(" ")
@@ -65,7 +79,7 @@ class WordsFragment : BaseFragment<WordsViewModel, WordsIntent>() {
                 val wordsList = mutableListOf<WordsModel>()
 
                 for (text in wordArrayList) {
-                    if (text != "") {
+                    if (text.trim() != "") {
                         wordsSet.add(text.trim())
                     }
                 }
@@ -82,16 +96,16 @@ class WordsFragment : BaseFragment<WordsViewModel, WordsIntent>() {
                         }
                     }
                 }
-
-                val resultString: StringBuilder = StringBuilder()
-
+                resultString = ArrayList()
                 wordsList.forEach {
-                    resultString.appendln(it.text + "   " + it.concurrency)
+                    resultString.add(WordsModel(it.text, it.concurrency))
                 }
 
-                preferenceModule.setWordsList(resultString.toString())
+                val resultGson = gson.toJson(resultString)
 
-                resultTxt.text = resultString
+                preferenceModule.setWordsList(resultGson)
+
+                adapter.addList(resultString)
             }
         }
     }
@@ -104,7 +118,13 @@ class WordsFragment : BaseFragment<WordsViewModel, WordsIntent>() {
         val view = inflater.inflate(R.layout.fragment_words, container, false)
 
         wordsProgressBar = view.findViewById(R.id.wordsProgressBar)
-        resultTxt = view.findViewById(R.id.resultTxt)
+        wordsRecycler = view.findViewById(R.id.wordsRecycler)
+
+        wordsRecycler.setHasFixedSize(true)
+        adapter = WordsAdapter()
+        gson = Gson()
+
+        wordsRecycler.adapter = adapter
 
         getWords()
 
@@ -113,12 +133,10 @@ class WordsFragment : BaseFragment<WordsViewModel, WordsIntent>() {
 
     fun getWords() {
         if (NetworkUtils.isConnected()) {
-
             wordsPublisher.onNext(WordsIntent.GetWordsIntent())
         } else {
-            var result: String? = " "
-            result = preferenceModule.getWordsList().toString()
-            resultTxt.text = result
+            val result = gson.fromJson(preferenceModule.getWordsList(), Array<WordsModel>::class.java).asList()
+            adapter.addList(result as ArrayList<WordsModel>)
             Toast.makeText(requireContext(), "No Internet", Toast.LENGTH_SHORT).show()
         }
     }
