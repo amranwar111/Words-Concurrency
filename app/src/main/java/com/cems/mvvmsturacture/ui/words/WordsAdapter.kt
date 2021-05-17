@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cems.mvvmsturacture.R
-import java.util.ArrayList
 
 class WordsAdapter() : RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
 
-    private val wordsList = ArrayList<WordsModel>()
+    private val wordsList = mutableListOf<WordsModel>()
 
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
 
@@ -36,7 +35,7 @@ class WordsAdapter() : RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
         holder.concurrencyTxt.text = word.concurrency.toString()
     }
 
-    fun addList(list: ArrayList<WordsModel>) {
+    fun addList(list: MutableList<WordsModel>) {
         wordsList.addAll(list)
         notifyDataSetChanged()
     }

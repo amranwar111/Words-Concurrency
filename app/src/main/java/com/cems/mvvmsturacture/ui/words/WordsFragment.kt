@@ -1,5 +1,8 @@
 package com.cems.mvvmsturacture.ui.words
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -124,20 +127,38 @@ class WordsFragment : BaseFragment<WordsViewModel, WordsIntent>() {
         adapter = WordsAdapter()
         gson = Gson()
 
-        wordsRecycler.adapter = adapter
-
         getWords()
+
+        wordsRecycler.adapter = adapter
 
         return view
     }
 
     fun getWords() {
-        if (NetworkUtils.isConnected()) {
+        if (isNetworkAvailable(requireContext())) {
             wordsPublisher.onNext(WordsIntent.GetWordsIntent())
         } else {
             val result = gson.fromJson(preferenceModule.getWordsList(), Array<WordsModel>::class.java).asList()
-            adapter.addList(result as ArrayList<WordsModel>)
+            Log.e("TAG", "getWords: " + result)
+            adapter.addList(result as MutableList<WordsModel>)
             Toast.makeText(requireContext(), "No Internet", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun isNetworkAvailable(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val n = cm.activeNetwork
+            if (n != null) {
+                val nc = cm.getNetworkCapabilities(n)
+                //It will check for both wifi and cellular network
+                return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+            }
+            return false
+        } else {
+            val netInfo = cm.activeNetworkInfo
+            return netInfo != null && netInfo.isConnectedOrConnecting
         }
     }
 }
